@@ -1,0 +1,17 @@
+{
+    "widget": [
+        {
+            "name": "Calender",
+            "nav-position": "right",
+            "option": {
+                "toggle": false
+            },
+            "widget-style": {
+                "right": "25px",
+                "bottom": "25px",
+                "width": "150px",
+                "height": "200px"
+            }
+        }
+    ]
+}
