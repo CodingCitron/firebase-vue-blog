@@ -8,7 +8,7 @@ const props = defineProps({
         class="background"
         :style="`background: no-repeat url(${path}); 
                 background-size: cover;
-                background-position: center;
+                background-position: center center;
                 `"
     >
         <slot></slot>
@@ -16,6 +16,6 @@ const props = defineProps({
 </template>
 <style scoped>
 .background {
-    min-height: 100vh;
+    height: 100vh;
 }
 </style>

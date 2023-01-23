@@ -7,10 +7,10 @@
                 "toggle": false
             },
             "widget-style": {
-                "right": "25px",
-                "bottom": "25px",
-                "width": "150px",
-                "height": "200px"
+                "right": "12px",
+                "bottom": "12px",
+                "width": "335px",
+                "height": "auto"
             }
         }
     ]

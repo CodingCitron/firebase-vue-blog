@@ -10,11 +10,11 @@ const props = defineProps({
     },
     height: {
         type: String,
-        default: '40px'
+        default: '45px'
     },
     backgroundColor: {
         type: String,
-        default: 'rgba(255, 255, 255, 0.8)'
+        default: 'rgba(255, 255, 255, 0.525)'
     },
     opacity: {
         type: String,
@@ -51,7 +51,7 @@ const rightWidgets = computed(() =>
 </script>
 <template>
     <nav
-        class="task-bar"
+        class="task-bar no-select"
         :class="position"
         :style="
             `width: ${width}; 

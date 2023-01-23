@@ -16,7 +16,7 @@ const { widgets } =  storeToRefs(widgetStore)
         v-for="item in widgets"
         :is="Widget[item.name]"
         type="widget"
-        :option="item.option"
+        :config="item"
     >
     </component>
 </template>
