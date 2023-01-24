@@ -20,7 +20,6 @@ function Calendar () {
 }
 
 Calendar.prototype.update = function () {
-    console.log(this)
     const date = new Date() 
     
     this.year = date.getFullYear()

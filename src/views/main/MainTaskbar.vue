@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, defineAsyncComponent } from 'vue'
+import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useTaskStore } from '../../strores/task'
 import { TASKBAR_BUTTONS } from '../../data/init'
@@ -92,7 +92,7 @@ const rightTaskbar = computed(() =>
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 5px 12px;
     z-index: 100;
 }
 

@@ -1,6 +1,6 @@
 <script setup>
 import Background from '../../components/Background.vue'
-import BackgroundImg from '../../assets/imgs/genshin_21_4K.jpg'
+import BackgroundImg from '../../assets/imgs/backgrounds/genshin_21_4K.jpg'
 import MainNavigation from './MainTaskbar.vue'
 import WidgetControl from './MainTask.vue'
 import Effect from '../../components/Effect.vue'
