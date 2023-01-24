@@ -65,6 +65,7 @@ button {
   transition: background 0.3s ease-in-out, color 0.15s ease-in-out;
 }
 
+.widget-button.active,
 .widget-button:hover {
   background: rgba(255, 255, 255, 0.15);
 }

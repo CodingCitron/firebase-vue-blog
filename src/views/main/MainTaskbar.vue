@@ -2,6 +2,7 @@
 import { ref, computed, defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useTaskbarStore } from '../../strores/taskbar'
+import { TASKBAR_BUTTONS } from '../../data/init'
 
 const props = defineProps({
     width: {
@@ -33,14 +34,6 @@ const props = defineProps({
 const taskbarStore = useTaskbarStore()
 const { taskbarButtons } =  storeToRefs(taskbarStore)
 
-const TASKBAR_BUTTONS = {}
-
-taskbarButtons.value.forEach(obj => {
-    const name = obj.name
-
-    TASKBAR_BUTTONS[name] = defineAsyncComponent(() => import(`../../components/taskbars/${name}.vue`))
-})
-
 const leftTaskbar = computed(() => 
     taskbarButtons.value.filter(button => button['nav-position'] === 'left')
 )
@@ -70,6 +63,7 @@ const rightTaskbar = computed(() =>
             <component 
                 v-for="item in leftTaskbar"
                 :is="TASKBAR_BUTTONS[item.name]"
+                :config="item"
             >
             </component>
         </div>
@@ -77,6 +71,7 @@ const rightTaskbar = computed(() =>
             <component 
                 v-for="item in centerTaskbar"
                 :is="TASKBAR_BUTTONS[item.name]"
+                :config="item"
             >
             </component>
         </div>
@@ -85,6 +80,7 @@ const rightTaskbar = computed(() =>
                 v-for="item in rightTaskbar"
                 :is="TASKBAR_BUTTONS[item.name]"
                 @taskbarButtonClick="e =>  item.click.call(item, e)"
+                :config="item"
             >
             </component>
         </div>

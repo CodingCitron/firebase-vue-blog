@@ -3,6 +3,8 @@ function TaskbarButton(config) {
     this['nav-position'] = config['nav-position']
     this.option = config.option
     this['style'] = config['style']
+    this['button-name'] = config['button-name']
+    this['icon-img-path'] = config['icon-img-path']
 }
 
 TaskbarButton.prototype.click = function() {

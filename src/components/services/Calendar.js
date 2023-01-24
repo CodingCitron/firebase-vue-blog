@@ -21,7 +21,7 @@ function Calendar () {
 
 Calendar.prototype.update = function () {
     const date = this.date 
-
+    
     this.year = date.getFullYear()
     this.hour = date.getHours()
     this.month = date.getMonth()

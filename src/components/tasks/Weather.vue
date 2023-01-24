@@ -6,17 +6,12 @@ import { useWeatherStore } from '../../strores/weather'
 const weatherStore = useWeatherStore()
 const { weather } = storeToRefs(weatherStore)
 
-const description = computed(() => {
-    const data = weather.value
-    const info = data.weather? data.weather[0].description : '정보 없음'
-    console.log(info)
-    return info
-})
+
 
 </script>
 <template>
     <div>
-        {{ description }}
+        
     </div>
 </template>
 <style scoped>

@@ -1,33 +1,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import Calendar from '../../utils/date'
+import Calendar from '../services/Calendar'
 
 const props = defineProps({
-    type: {
-        type: String,
-        default: 'button'
-    },
     config: Object
 })
 
 const days = ['일', '월', '화', '수', '목', '금', '토']
 const date = ref(new Calendar())
-
-let intervalId = null
-if(props.type === 'button') intervalId = setInterval(date.value.update(), 1000)
-
-onUnmounted(() => {
-    if(intervalId) clearInterval(intervalId)
-})
-
-const getFormatTime = computed(
-    () => 
-    `${date.value.meridiem} ${date.value.formatHour}:${date.value.addZero(date.value.minute)}`
-)
-const getFormatDate = computed(
-    () => 
-    `${date.value.year}-${date.value.addZero(date.value.month + 1)}-${date.value.day}`
-)
 
 const today = computed(() => { 
     const { month, day, week } = date.value
@@ -69,23 +49,11 @@ function nextHandler() {
 const emits = defineEmits(['taskbar-button-click'])
 </script>
 <template>
-    <button 
-        @click="e => emits('taskbar-button-click', e)"
-        v-if="type === 'button'"
-        class="task-bar-time widget-button"
-    >
-        <div class="time">
-            {{ getFormatTime }}
-        </div>
-        <div class="date">
-            {{ getFormatDate }}
-        </div>
-    </button>
     <Transition
         name="slide"
     >
         <div 
-            v-show="type === 'widget' && config.option.toggle"
+            v-show="config.option.toggle"
             class="theme-light widget-calender no-select"
             :style="config && config.style"
         >
@@ -148,19 +116,6 @@ const emits = defineEmits(['taskbar-button-click'])
     </Transition>
 </template>
 <style scoped>
-.task-bar-time {
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    gap: 2px;
-}
-
-.date,
-.time {
-    width: 100%;
-    text-align: right;
-}
-
 .widget-calender-wrap {
     display: flex;
     flex-direction: column;

@@ -1,9 +1,13 @@
 {
-    "check-taskbar-buttons": ["Calendar", "Weather"],
-    "taskbar-buttons": [
+    "check-taskbar-buttons": [
+        "Calendar", "Weather", "StartMenu"
+    ],
+    "tasks": [
         {
             "name": "Calendar",
             "nav-position": "right",
+            "button-name": "CalendarButton",
+            "icon-img-path": "",
             "option": {
                 "toggle": false
             },
@@ -16,7 +20,21 @@
         },
         {
             "name": "Weather",
+            "button-name": "WeatherButton",
+            "icon-img-path": "",
             "nav-position": "left",
+            "option": {
+                "toggle": false
+            },
+            "style": {
+
+            }
+        },
+        {
+            "name": "StartMenu",
+            "button-name": "StartMenuButton",
+            "icon-img-path": "",
+            "nav-position": "center",
             "option": {
                 "toggle": false
             },
