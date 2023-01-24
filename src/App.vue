@@ -1,8 +1,8 @@
 <script setup>
-import { useWidgetStore } from './strores/widget'
+import { useUserStore } from './strores/user'
 
-// useWidgetStore.$reset()
-
+const userStore = useUserStore()
+userStore.getIp
 </script>
 <template>
   <router-view></router-view>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useWidgetStore } from '../../strores/widget'
+import { useTaskbarStore } from '../../strores/taskbar'
 
 const props = defineProps({
     width: {
@@ -30,23 +30,27 @@ const props = defineProps({
     }
 })
 
-const Widget = {
-    Calender: defineAsyncComponent(() => import('../../components/Calender.vue'))
-}
+const taskbarStore = useTaskbarStore()
+const { taskbarButtons } =  storeToRefs(taskbarStore)
 
-const widgetStore = useWidgetStore()
-const { widgets } =  storeToRefs(widgetStore)
+const TASKBAR_BUTTONS = {}
 
-const leftWidgets = computed(() => 
-    widgets.value.filter(widget => widget['nav-position'] === 'left')
+taskbarButtons.value.forEach(obj => {
+    const name = obj.name
+
+    TASKBAR_BUTTONS[name] = defineAsyncComponent(() => import(`../../components/taskbars/${name}.vue`))
+})
+
+const leftTaskbar = computed(() => 
+    taskbarButtons.value.filter(button => button['nav-position'] === 'left')
 )
 
-const centerWidgets = computed(() => 
-    widgets.value.filter(widget => widget['nav-position'] === 'center')
+const centerTaskbar = computed(() => 
+    taskbarButtons.value.filter(button => button['nav-position'] === 'center')
 )
 
-const rightWidgets = computed(() => 
-    widgets.value.filter(widget => widget['nav-position'] === 'right')
+const rightTaskbar = computed(() => 
+    taskbarButtons.value.filter(button => button['nav-position'] === 'right')
 )
 </script>
 <template>
@@ -64,23 +68,23 @@ const rightWidgets = computed(() =>
     >
         <div class="task-bar-left">
             <component 
-                v-for="item in leftWidgets"
-                :is="Widget[item.name]"
+                v-for="item in leftTaskbar"
+                :is="TASKBAR_BUTTONS[item.name]"
             >
             </component>
         </div>
         <div class="task-bar-center">
             <component 
-                v-for="item in centerWidgets"
-                :is="Widget[item.name]"
+                v-for="item in centerTaskbar"
+                :is="TASKBAR_BUTTONS[item.name]"
             >
             </component>
         </div>
         <div class="task-bar-right">
             <component 
-                v-for="item in rightWidgets"
-                :is="Widget[item.name]"
-                @widgetClick="e =>  item.click.call(item, e)"
+                v-for="item in rightTaskbar"
+                :is="TASKBAR_BUTTONS[item.name]"
+                @taskbarButtonClick="e =>  item.click.call(item, e)"
             >
             </component>
         </div>

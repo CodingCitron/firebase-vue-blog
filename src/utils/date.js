@@ -1,95 +1,55 @@
 const WEEKDAY = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 const KR_WEEKDAY = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
 
-function getDate() {
-    const date = new Date()
+function Calendar () {
+    this.date = new Date()
+    this.utc = this.date.getTime() + (this.date.getTimezoneOffset() * 60 * 1000)
+    this.kstGap = 9 * 60 * 60 * 1000
 
-    let utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000), // utc 표준 시
-    kstGap = 9 * 60 * 60 * 1000, // 한국 kst 기준시간 더하기
-    year = date.getFullYear(),
-    month = date.getMonth() + 1,
-    day = date.getDate(),
-    hour = date.getHours(),
-    minute = date.getMinutes(),
-    second = date.getSeconds(),
-    meridiem = hour > 12? '오후' : '오전',
-    formatHour = hour > 12? hour - 12 : hour,
-    kr = {
-        today: new Date(utc + kstGap)
-    }
+    this.today = new Date(this.utc + this.kstGap)
+    this.thisMonth = new Date(
+        this.today.getFullYear(), 
+        this.today.getMonth(), 
+        this.today.getDate()
+    )
 
-    return {
-        date,
-        utc,
-        year,
-        month,
-        day,
-        hour,
-        minute,
-        second,
-        meridiem,
-        formatHour,
-        kr
-    }
+    this.week = KR_WEEKDAY[this.today.getDay()]
+
+    this.calcData(this.thisMonth)
+    this.update()
 }
 
-function addZero(value) {
+Calendar.prototype.update = function () {
+    const date = this.date 
+
+    this.year = date.getFullYear()
+    this.hour = date.getHours()
+    this.month = date.getMonth()
+    this.day = date.getDate()
+    this.minute = date.getMinutes()
+    this.second = date.getSeconds()
+    this.meridiem = this.hour > 12? '오후' : '오전'
+    this.formatHour = this.hour > 12? this.hour - 12 : this.hour
+}
+
+Calendar.prototype.calcData = function (thisMonth) {
+    this.currentYear = thisMonth.getFullYear()
+    this.currentMonth = thisMonth.getMonth()
+    this.currentDate = thisMonth.getDate()
+
+    // 이전 달의 마지막 날 날짜와 요일 구하기
+    this.startDay = new Date(this.currentYear, this.currentMonth, 0)
+    this.prevDate = this.startDay.getDate()
+    this.prevDay = this.startDay.getDay()
+
+    // 이번 달의 마지막날 날짜와 요일 구하기
+    this.endDay = new Date(this.currentYear, this.currentMonth + 1, 0)
+    this.nextDate = this.endDay.getDate()
+    this.nextDay = this.endDay.getDay()
+}
+
+Calendar.prototype.addZero = function (value) {
     return value < 10 ? `0${value}` : value
 }
 
-function format(value) { 
-    return {
-        addZero: () => addZero(value)
-    }
-}
-
-function krToday() {
-    const date = new Date()
-
-    let utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000), // utc 표준 시
-    kstGap = 9 * 60 * 60 * 1000 // 한국 kst 기준시간 더하기
-
-    return new Date(utc + kstGap)
-}
-
-function createCalenderValue() {
-    
-    let today = krToday(),
-    thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-
-    currentYear = thisMonth.getFullYear(),
-    currentMonth = thisMonth.getMonth(),
-    currentDate = thisMonth.getDate(),
-
-    startDay = new Date(currentYear, currentMonth, 0),
-    prevDate = startDay.getDate(),
-    prevDay = startDay.getDay(),
-
-    endDay = new Date(currentYear, currentMonth + 1, 0),
-    nextDate = endDay.getDate(),
-    nextDay = endDay.getDay()
-
-    const week = KR_WEEKDAY[thisMonth.getDay()]
-
-    return {
-        today, 
-        thisMonth, 
-        currentYear, 
-        currentMonth: currentMonth + 1, 
-        currentDate, 
-        startDay, 
-        prevDate, 
-        prevDay,
-        endDay,
-        nextDate,
-        nextDay,
-        week
-    }
-}
-
-export {
-    getDate,
-    format,
-    krToday,
-    createCalenderValue
-}
+export default Calendar

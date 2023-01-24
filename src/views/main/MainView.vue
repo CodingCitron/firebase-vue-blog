@@ -1,13 +1,14 @@
 <script setup>
 import Background from '../../components/Background.vue'
 import BackgroundImg from '../../assets/imgs/genshin_21_4K.jpg'
-import MainNavigation from './MainNavigation.vue'
-import WidgetControl from './WidgetControl.vue'
+import MainNavigation from './MainTaskbar.vue'
+import WidgetControl from './MainTask.vue'
+import Effect from '../../components/Effect.vue'
 
-import { useWidgetStore } from '../../strores/widget'
+import { useTaskbarStore } from '../../strores/taskbar'
 
-const widgetStore = useWidgetStore()
-widgetStore.$reset()
+const taskbarStore = useTaskbarStore()
+taskbarStore.$reset()
 
 const defaultStyle = {
     height: 'calc(100vh - 45px)'
