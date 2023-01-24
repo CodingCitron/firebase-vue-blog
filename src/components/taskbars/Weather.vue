@@ -17,7 +17,7 @@ async function getLocation() {
             lon: res.data.longitude
         })
 
-        console.log(weatherInfo)
+        console.log(weatherInfo.data)
     } catch (error) {
 
     }
