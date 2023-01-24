@@ -5,8 +5,8 @@
     "tasks": [
         {
             "name": "Calendar",
-            "nav-position": "right",
             "button-name": "CalendarButton",
+            "nav-position": "right",
             "icon-img-path": "",
             "option": {
                 "toggle": false
@@ -21,8 +21,8 @@
         {
             "name": "Weather",
             "button-name": "WeatherButton",
-            "icon-img-path": "",
             "nav-position": "left",
+            "icon-img-path": "",
             "option": {
                 "toggle": false
             },
@@ -33,8 +33,8 @@
         {
             "name": "StartMenu",
             "button-name": "StartMenuButton",
-            "icon-img-path": "",
             "nav-position": "center",
+            "icon-img-path": "",
             "option": {
                 "toggle": false
             },

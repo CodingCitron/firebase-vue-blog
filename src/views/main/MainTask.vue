@@ -1,10 +1,10 @@
 <script setup>
 import { storeToRefs } from 'pinia'
-import { useTaskbarStore } from '../../strores/taskbar'
+import { useTaskStore } from '../../strores/task'
 import { TASKS } from '../../data/init'
 
-const taskbarStore = useTaskbarStore()
-const { taskbarButtons } =  storeToRefs(taskbarStore)
+const taskStore = useTaskStore()
+const { taskbarButtons } =  storeToRefs(taskStore)
 </script>
 <template>
     <component 

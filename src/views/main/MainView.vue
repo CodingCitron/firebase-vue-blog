@@ -5,10 +5,10 @@ import MainNavigation from './MainTaskbar.vue'
 import WidgetControl from './MainTask.vue'
 import Effect from '../../components/Effect.vue'
 
-import { useTaskbarStore } from '../../strores/taskbar'
+import { useTaskStore } from '../../strores/task'
 
-const taskbarStore = useTaskbarStore()
-taskbarStore.$reset()
+const taskStore = useTaskStore()
+taskStore.$reset()
 
 const defaultStyle = {
     height: 'calc(100vh - 45px)'

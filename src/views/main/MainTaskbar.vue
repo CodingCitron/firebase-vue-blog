@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useTaskbarStore } from '../../strores/taskbar'
+import { useTaskStore } from '../../strores/task'
 import { TASKBAR_BUTTONS } from '../../data/init'
 
 const props = defineProps({
@@ -31,8 +31,8 @@ const props = defineProps({
     }
 })
 
-const taskbarStore = useTaskbarStore()
-const { taskbarButtons } =  storeToRefs(taskbarStore)
+const taskStore = useTaskStore()
+const { taskbarButtons } =  storeToRefs(taskStore)
 
 const leftTaskbar = computed(() => 
     taskbarButtons.value.filter(button => button['nav-position'] === 'left')

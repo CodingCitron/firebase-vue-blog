@@ -1,10 +1,12 @@
 <script setup>
-
+const props = defineProps({
+    config: Object
+})
 </script>
 <template>
-    <Button>
+    <button>
         시작
-    </Button>
+    </button>
 </template>
 <style scoped>
 
