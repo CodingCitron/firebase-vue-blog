@@ -5,12 +5,12 @@ import Button from './services/TaskbarButton'
 
 export const useTaskStore = defineStore('task', () => {
     const task = ref([])
-    const taskbars = ref([])
-
-    initData.taskbars.forEach(button => taskbars.value.push(new Button(button)))
+    const taskbarButtons = ref([])
+    console.log(initData)
+    initData.tasks.forEach(data => taskbarButtons.value.push(new Button(data)))
 
     return {
         task,
-        taskbars
+        taskbarButtons
     }
 })
