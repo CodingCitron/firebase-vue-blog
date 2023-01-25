@@ -2,6 +2,8 @@
 const props = defineProps({
     config: Object
 })
+
+
 </script>
 <template>
     <button>

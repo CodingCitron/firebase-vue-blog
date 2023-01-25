@@ -1,5 +1,5 @@
 export default function deepCopy (obj) {
-    if(obj === null || typeof obj !== "object") return obj
+    if(obj === null || typeof obj !== 'object') return obj
     let copy = {}
 
     if(Array.isArray(obj)) copy = []

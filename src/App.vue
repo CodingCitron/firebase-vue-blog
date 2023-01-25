@@ -7,6 +7,8 @@ const weatherStore = useWeatherStore()
 
 userStore.getIp
 weatherStore.setWeather()
+
+// let intervalId = setInterval(weatherStore.setWeather, )
 </script>
 <template>
   <router-view></router-view>

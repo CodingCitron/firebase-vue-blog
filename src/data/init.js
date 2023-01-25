@@ -2,18 +2,18 @@ import initData from './init-data.json'
 import { defineAsyncComponent } from 'vue'
 
 const TASKS = {}
-const TASKBAR_BUTTONS = {}
+const TASK_BUTTONS = {}
 
 initData.tasks.forEach(obj => {
     TASKS[obj.name] = defineAsyncComponent(
         () => import(`../components/tasks/${obj.name}.vue`)
     )
-    TASKBAR_BUTTONS[obj.name] = defineAsyncComponent(
-        () => import(`../components/taskbar-buttons/${obj['button-name']}.vue`)
+    TASK_BUTTONS[obj.name] = defineAsyncComponent(
+        () => import(`../components/task-buttons/${obj['button-name']}.vue`)
     )
 })
 
 export {
     TASKS,
-    TASKBAR_BUTTONS
+    TASK_BUTTONS
 }

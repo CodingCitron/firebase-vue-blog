@@ -26,9 +26,7 @@
             "option": {
                 "toggle": false
             },
-            "style": {
-
-            }
+            "style": {}
         },
         {
             "name": "StartMenu",
@@ -39,7 +37,11 @@
                 "toggle": false
             },
             "style": {
-
+                "left": "50%",
+                "bottom": "12px",
+                "width": "400px",
+                "height": "600px",
+                "transform": "translateX(-50%)"
             }
         }
     ]

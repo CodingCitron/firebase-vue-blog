@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useTaskStore } from '../../strores/task'
-import { TASKBAR_BUTTONS } from '../../data/init'
+import { TASK_BUTTONS } from '../../data/init'
 
 const props = defineProps({
     width: {
@@ -32,18 +32,18 @@ const props = defineProps({
 })
 
 const taskStore = useTaskStore()
-const { taskbarButtons } =  storeToRefs(taskStore)
+const { taskButtons } =  storeToRefs(taskStore)
 
 const leftTaskbar = computed(() => 
-    taskbarButtons.value.filter(button => button['nav-position'] === 'left')
+    taskButtons.value.filter(button => button['nav-position'] === 'left')
 )
 
 const centerTaskbar = computed(() => 
-    taskbarButtons.value.filter(button => button['nav-position'] === 'center')
+    taskButtons.value.filter(button => button['nav-position'] === 'center')
 )
 
 const rightTaskbar = computed(() => 
-    taskbarButtons.value.filter(button => button['nav-position'] === 'right')
+    taskButtons.value.filter(button => button['nav-position'] === 'right')
 )
 </script>
 <template>
@@ -62,7 +62,7 @@ const rightTaskbar = computed(() =>
         <div class="task-bar-left">
             <component 
                 v-for="item in leftTaskbar"
-                :is="TASKBAR_BUTTONS[item.name]"
+                :is="TASK_BUTTONS[item.name]"
                 :config="item"
             >
             </component>
@@ -70,7 +70,7 @@ const rightTaskbar = computed(() =>
         <div class="task-bar-center">
             <component 
                 v-for="item in centerTaskbar"
-                :is="TASKBAR_BUTTONS[item.name]"
+                :is="TASK_BUTTONS[item.name]"
                 :config="item"
             >
             </component>
@@ -78,8 +78,7 @@ const rightTaskbar = computed(() =>
         <div class="task-bar-right">
             <component 
                 v-for="item in rightTaskbar"
-                :is="TASKBAR_BUTTONS[item.name]"
-                @taskbarButtonClick="e =>  item.click.call(item, e)"
+                :is="TASK_BUTTONS[item.name]"
                 :config="item"
             >
             </component>

@@ -19,8 +19,6 @@ const getFormatDate = computed(
     `${date.value.year}-${date.value.addZero(date.value.month + 1)}-${date.value.day}`
 )
 
-const emits = defineEmits(['taskbar-button-click'])
-
 onUnmounted(() => {
     if(intervalId) clearInterval(intervalId)
 })
@@ -28,7 +26,7 @@ onUnmounted(() => {
 <template>
     <button 
         :title="`${date.year}년 ${date.month + 1}월 ${date.day}일 ${date.week}`"
-        @click="e => emits('taskbar-button-click', e)"
+        @click="props.config.toggleHandler()"
         class="task-bar-time widget-button"
         :class="config.option.toggle? 'active' : ''"
     >

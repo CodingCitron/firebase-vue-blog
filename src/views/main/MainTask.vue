@@ -4,11 +4,11 @@ import { useTaskStore } from '../../strores/task'
 import { TASKS } from '../../data/init'
 
 const taskStore = useTaskStore()
-const { taskbarButtons } =  storeToRefs(taskStore)
+const { taskButtons } =  storeToRefs(taskStore)
 </script>
 <template>
     <component 
-        v-for="item in taskbarButtons"
+        v-for="item in taskButtons"
         :is="TASKS[item.name]"
         :config="item"
     >
