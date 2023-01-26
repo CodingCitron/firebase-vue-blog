@@ -21,7 +21,11 @@ const dragging = new MouseDragging()
     <Background :path="BackgroundImg">
         <main class="view">
             <div class="control-view"
-                :ref="target => dragging.setScope.call(dragging, target)"
+                :ref="target => dragging.setScope.call(
+                    dragging, 
+                    target, 
+                    dragging.activeEvent.bind(dragging)
+                )"
                 style="height: calc(100vh - 45px);"
             >
                 <WidgetControl />
