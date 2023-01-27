@@ -1,17 +1,25 @@
-import TaskButton from './TaskButton'
+import { defineAsyncComponent, markRaw } from 'vue'
 
 function Task(config) {
     this.name = config.name
-    this['style'] = config['style']
+    this.option = config.option
+    this.style = config.style
+
+    this['linked-instance']
+
+    this.init()
 }
 
-Task.prototype.linked = function(object) {
-    this['linked-instance'] = object
+Task.prototype.setComponent = function () {
+    this.component = markRaw(
+            defineAsyncComponent(
+            () => import(`../../components/tasks/${this.constructor.name}.vue`)
+        )
+    )
 }
 
-Task.prototype.createTaskButton = function () {
-
-    return /* 인스턴스 */
+Task.prototype.init = function () {
+    this.setComponent()
 }
 
 export default Task

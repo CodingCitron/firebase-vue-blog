@@ -1,47 +1,71 @@
 {
-    "check-taskbar-buttons": [
-        "Calendar", "Weather", "StartMenu"
-    ],
     "tasks": [
-        {
+        {   
             "name": "Calendar",
-            "button-name": "CalendarButton",
-            "nav-position": "right",
-            "icon-img-path": "",
-            "option": {
+            "task": {
+                "option": {
+                    "created": true
+                },
+                "style": {
+                    "right": "12px",
+                    "bottom": "12px",
+                    "width": "335px",
+                    "height": "auto"
+                },
                 "toggle": false
             },
-            "style": {
-                "right": "12px",
-                "bottom": "12px",
-                "width": "335px",
-                "height": "auto"
+            "button": {
+                "scope-component": {
+                    "name": "MainTaskbar",
+                    "position": "right"
+                },
+                "icon-name": "",
+                "option": {},
+                "style": {}
             }
         },
         {
             "name": "Weather",
-            "button-name": "WeatherButton",
-            "nav-position": "left",
-            "icon-img-path": "",
-            "option": {
+            "task": {
+                "option": {
+                    "created": true
+                },
+                "style": {},
                 "toggle": false
             },
-            "style": {}
+            "button": {
+                "scope-component": {
+                    "name": "MainTaskbar",
+                    "position": "left"
+                },
+                "icon-name": "",
+                "option": {},
+                "style": {}
+            }
         },
         {
             "name": "StartMenu",
-            "button-name": "StartMenuButton",
-            "nav-position": "center",
-            "icon-img-path": "",
-            "option": {
+            "task": {
+                "option": {
+                    "created": true
+                },
+                "style": {
+                    "left": "50%",
+                    "bottom": "12px",
+                    "width": "400px",
+                    "height": "600px",
+                    "transform": "translateX(-50%)"
+                },
                 "toggle": false
             },
-            "style": {
-                "left": "50%",
-                "bottom": "12px",
-                "width": "400px",
-                "height": "600px",
-                "transform": "translateX(-50%)"
+            "button": {
+                "scope-component": {
+                    "name": "MainTaskbar",
+                    "position": "center"
+                },
+                "icon-name": "",
+                "option": {},
+                "style": {}
             }
         }
     ]

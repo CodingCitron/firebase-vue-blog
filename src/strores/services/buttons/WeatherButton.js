@@ -1,9 +1,10 @@
-import TaskButton from '../TaskButton'
+import Button from '../Button'
 
-function WeatherButton() {
-    TaskButton.call(this)
+function WeatherButton(config) {
+    Button.call(this, config)
 }
 
-WeatherButton.prototype = Object.create(TaskButton.prototype)
+WeatherButton.prototype = Object.create(Button.prototype)
+WeatherButton.prototype.constructor = WeatherButton
 
 export default WeatherButton

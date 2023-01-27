@@ -26,8 +26,8 @@ onUnmounted(() => {
 <template>
     <button 
         :title="`${date.year}년 ${date.month + 1}월 ${date.day}일 ${date.week}`"
-        @click="props.config.toggleHandler()"
-        class="task-bar-time widget-button"
+        @click="config.toggleHandler()"
+        class="task-bar-time task-button"
         :class="config.option.toggle? 'active' : ''"
     >
         <div class="time">

@@ -3,14 +3,14 @@ import Folder from './buttons/FolderButton'
 import StartMenu from './buttons/StartMenuButton'
 import Weather from './buttons/WeatherButton'
 
-const TASK_BUTTONS = {
+const BUTTONS = {
     Calendar,
     Folder,
     StartMenu,
     Weather
 }
 
-export default function DynamicTaskButton(name, config) {
-    return new TASK_BUTTONS[name](config)
+export default function DynamicButton(name, config) {
+    return new BUTTONS[name](config)
 }
 

@@ -1,21 +1,20 @@
 <script setup>
+import { ref, onUnmounted, onMounted } from 'vue'
 import Background from '../../components/Background.vue'
 import BackgroundImg from '../../assets/imgs/backgrounds/windows11-bg-1.jpg'
 import MainNavigation from './MainTaskbar.vue'
-import WidgetControl from './MainTask.vue'
+import MainTask from './MainTask.vue'
 import Effect from '../../components/Effect.vue'
 import MouseDragging from './services/MouseDragging'
-
+import config from '../../data/config.json'
 import { useTaskStore } from '../../strores/task'
 
 const taskStore = useTaskStore()
-taskStore.$reset()
+// taskStore.$reset()
 
-const defaultStyle = {
-    height: 'calc(100vh - 45px)'
-}
+console.log(config)
 
-const dragging = new MouseDragging()
+const dragging = ref(new MouseDragging())
 </script>
 <template>
     <Background :path="BackgroundImg">
@@ -26,13 +25,11 @@ const dragging = new MouseDragging()
                     target, 
                     dragging.activeEvent.bind(dragging)
                 )"
-                style="height: calc(100vh - 45px);"
+                :style="config['main-navigation'].style"
             >
-                <WidgetControl />
+                <MainTask />
             </div>
-            <MainNavigation 
-                
-            />
+            <MainNavigation />
         </main>
     </Background>
 </template>

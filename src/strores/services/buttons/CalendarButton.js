@@ -1,9 +1,10 @@
-import TaskButton from '../TaskButton'
+import Button from '../Button'
 
-function CalendarButton() {
-    TaskButton.call(this)
+function CalendarButton(config) {
+    Button.call(this, config)
 }
 
-CalendarButton.prototype = Object.create(TaskButton.prototype)
+CalendarButton.prototype = Object.create(Button.prototype)
+CalendarButton.prototype.constructor = CalendarButton
 
 export default CalendarButton

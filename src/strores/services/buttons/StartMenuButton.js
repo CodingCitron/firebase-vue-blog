@@ -1,9 +1,10 @@
-import TaskButton from '../TaskButton'
+import Button from '../Button'
 
-function StartMenu() {
-    TaskButton.call(this)
+function StartMenuButton(config) {
+    Button.call(this, config)
 }
 
-StartMenu.prototype = Object.create(TaskButton.prototype)
+StartMenuButton.prototype = Object.create(Button.prototype)
+StartMenuButton.prototype.constructor = StartMenuButton
 
-export default StartMenu
+export default StartMenuButton

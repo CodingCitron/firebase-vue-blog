@@ -1,9 +1,10 @@
 import Task from '../Task'
 
-function Folder() {
-    Task.call(this)
+function Folder(config) {
+    Task.call(this, config)
 }
 
 Folder.prototype = Object.create(Task.prototype)
+Folder.prototype.constructor = Folder
 
 export default Folder

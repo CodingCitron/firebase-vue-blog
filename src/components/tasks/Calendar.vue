@@ -6,6 +6,8 @@ const props = defineProps({
     config: Object
 })
 
+console.log(props.config)
+
 const days = ['일', '월', '화', '수', '목', '금', '토']
 const date = ref(new Calendar())
 
@@ -53,13 +55,13 @@ const emits = defineEmits(['taskbar-button-click'])
         name="slide"
     >
         <div 
-            v-show="config.option.toggle"
-            class="theme-light widget-calender no-select"
+            v-show="config.toggle"
+            class="theme-light task-calender no-select"
             :style="config && config.style"
         >
-            <div class="widget-calender-wrap">
+            <div class="task-calender-wrap">
                 <header>
-                    <div class="widget-color-transition">{{ today }}</div>
+                    <div class="task-color-transition">{{ today }}</div>
                     <button class="toggle-button-1">
 
                     </button>
@@ -70,7 +72,7 @@ const emits = defineEmits(['taskbar-button-click'])
                             <button 
                                 class="bold 
                                 year-month-button
-                                widget-background-transition"
+                                task-background-transition"
                             >
                                 {{ yearMonth }}
                             </button>
@@ -116,40 +118,40 @@ const emits = defineEmits(['taskbar-button-click'])
     </Transition>
 </template>
 <style scoped>
-.widget-calender-wrap {
+.task-calender-wrap {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.widget-calender .widget-calender-wrap > header {
+.task-calender .task-calender-wrap > header {
     display: flex;
     justify-content: space-between;
     padding: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.widget-calender .calender-view {
+.task-calender .calender-view {
     flex: 1;
     padding: 12px;
 }
 
-.widget-calender .calender-view-header {
+.task-calender .calender-view-header {
     display: flex;
 }
 
-.widget-calender .year-month-button {
+.task-calender .year-month-button {
     width: 60%;
     padding: 4px;
     text-align: left;
 }
 
-.widget-calender .days {
+.task-calender .days {
     display: flex;
     flex-wrap: wrap;
 }
 
-.widget-calender .day {
+.task-calender .day {
     width: calc(100% / 7);
     text-align: center;
     padding: 4px;

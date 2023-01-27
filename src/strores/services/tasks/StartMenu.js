@@ -1,9 +1,10 @@
 import Task from '../Task'
 
-function StartMenu() {
-    Task.call(this)
+function StartMenu(config) {
+    Task.call(this, config)
 }
 
 StartMenu.prototype = Object.create(Task.prototype)
+StartMenu.prototype.constructor = StartMenu
 
 export default StartMenu

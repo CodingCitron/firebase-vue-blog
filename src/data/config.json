@@ -1,3 +1,7 @@
 {
-    
+    "main-navigation": {
+        "style": {
+            "height": "calc(100vh - 45px)"
+        }
+    }
 }

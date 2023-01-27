@@ -1,18 +1,20 @@
 <script setup>
 import { storeToRefs } from 'pinia'
 import { useTaskStore } from '../../strores/task'
-import { TASKS } from '../../data/init'
 
 const taskStore = useTaskStore()
-const { taskButtons } =  storeToRefs(taskStore)
+const { tasks } =  storeToRefs(taskStore)
 </script>
 <template>
     <component 
-        v-for="item in taskButtons"
-        :is="TASKS[item.name]"
+        v-for="item in tasks"
+        :is="item.component"
         :config="item"
     >
     </component>
 </template>
 <style scoped>
+.white {
+    color: white;
+}
 </style>

@@ -1,14 +1,9 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useTaskStore } from '../../strores/task'
-import { TASK_BUTTONS } from '../../data/init'
+import { useButtonStore } from '../../strores/button'
 
 const props = defineProps({
-    width: {
-        type: String,
-        default: '100%'
-    },
     height: {
         type: String,
         default: '45px'
@@ -31,27 +26,33 @@ const props = defineProps({
     }
 })
 
-const taskStore = useTaskStore()
-const { taskButtons } =  storeToRefs(taskStore)
+const buttonStore = useButtonStore()
+const { buttons } =  storeToRefs(buttonStore)
 
-const leftTaskbar = computed(() => 
-    taskButtons.value.filter(button => button['nav-position'] === 'left')
-)
+const leftTaskbar = computed(() => {
+    return buttons.value.filter(button => 
+        button['scope-component'].position === 'left'
+    )
+})
 
-const centerTaskbar = computed(() => 
-    taskButtons.value.filter(button => button['nav-position'] === 'center')
-)
+const centerTaskbar = computed(() => {
+    return buttons.value.filter(button => 
+        button['scope-component'].position === 'center'
+    )
+})
 
-const rightTaskbar = computed(() => 
-    taskButtons.value.filter(button => button['nav-position'] === 'right')
-)
+const rightTaskbar = computed(() => {
+    return buttons.value.filter(button => 
+        button['scope-component'].position === 'right'
+    )
+})
 </script>
 <template>
     <nav
         class="task-bar no-select"
         :class="position"
         :style="
-            `width: ${width}; 
+            ` 
             height: ${height}; 
             background: ${backgroundColor};
             opacity: ${opacity};
@@ -62,7 +63,7 @@ const rightTaskbar = computed(() =>
         <div class="task-bar-left">
             <component 
                 v-for="item in leftTaskbar"
-                :is="TASK_BUTTONS[item.name]"
+                :is="item.component"
                 :config="item"
             >
             </component>
@@ -70,7 +71,7 @@ const rightTaskbar = computed(() =>
         <div class="task-bar-center">
             <component 
                 v-for="item in centerTaskbar"
-                :is="TASK_BUTTONS[item.name]"
+                :is="item.component"
                 :config="item"
             >
             </component>
@@ -78,7 +79,7 @@ const rightTaskbar = computed(() =>
         <div class="task-bar-right">
             <component 
                 v-for="item in rightTaskbar"
-                :is="TASK_BUTTONS[item.name]"
+                :is="item.component"
                 :config="item"
             >
             </component>
@@ -91,6 +92,7 @@ const rightTaskbar = computed(() =>
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     padding: 5px 12px;
     z-index: 100;
 }

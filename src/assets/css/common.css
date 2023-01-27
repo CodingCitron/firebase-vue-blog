@@ -1,0 +1,62 @@
+.silver {
+    color: #656565;
+}
+
+/* common */
+.task-color-transition {
+    transition: color 0.3s ease-in-out;
+}
+  
+.task-color-transition:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+  
+.task-background-transition {
+    transition: background 0.3s ease-in-out;
+}
+  
+.task-background-transition:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.task-background-transition:active {
+    background: rgba(255, 255, 255, 0.15);
+}
+/* common*/
+
+.task-button {
+    padding: 2px 3px;
+    border-radius: 2px;
+    transition: background 0.3s ease-in-out, color 0.15s ease-in-out;
+}
+
+.task-button.active,
+.task-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.task-button:active {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.task-calender {
+    position: absolute;
+}
+
+/* task-Calender */
+.task-calender {
+    border-radius: 4px;
+}
+
+/* toggle-button-style */
+.toggle-button-1 {
+
+}
+
+.toggle-button-1:hover {
+
+}
+
+.toggle-button-1:active {
+
+}

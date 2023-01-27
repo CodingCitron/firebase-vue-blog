@@ -9,9 +9,11 @@ function MouseDragging(config) {
     this.rectangle = {}
     this.style = {
         position: 'absolute',
-        backgroundColor: '#E6005FB8',
+        backgroundColor: 'rgba(0, 120, 215, 0.5)',
         overflow: 'hidden',
     }
+
+    this.selected = []
 }
 
 MouseDragging.prototype.setScope = function (target, callback) {
@@ -20,17 +22,17 @@ MouseDragging.prototype.setScope = function (target, callback) {
 }
 
 MouseDragging.prototype.activeEvent = function () {
-    this.scope.addEventListener(
+    addEventListener(
         'mousedown', 
         this.downHandler.bind(this)
     )
 
-    this.scope.addEventListener(
+    addEventListener(
         'mousemove', 
         this.moveHandler.bind(this)
     )
 
-    this.scope.addEventListener(
+    addEventListener(
         'mouseup', 
         this.upHandler.bind(this)
     )
@@ -43,26 +45,31 @@ MouseDragging.prototype.createBorder = function () {
     const right = document.createElement('div')
     const top = document.createElement('div')
     const bottom = document.createElement('div')
+    const color = 'rgba(0, 120, 215, 1)'
 
     left.style.position = 'absolute'
     left.style.left = '0px'
     left.style.width = '1px'
     left.style.height = '100%'
+    left.style.backgroundColor = color
 
     right.style.position = 'absolute'
     right.style.right = '0px'
     right.style.width = '1px'
     right.style.height = '100%'
-    
+    right.style.backgroundColor = color
+
     top.style.position = 'absolute'
     top.style.top = '0px'
     top.style.height = '1px'
     top.style.width = '100%'
+    top.style.backgroundColor = color
 
     bottom.style.position = 'absolute'
     bottom.style.bottom = '0px'
     bottom.style.height = '1px'
     bottom.style.width = '100%'
+    bottom.style.backgroundColor = color
 
     div.append(left)
     div.append(right)
@@ -73,7 +80,8 @@ MouseDragging.prototype.createBorder = function () {
 MouseDragging.prototype.downHandler = function (e) {
     e.preventDefault()
     this.mouseDown = true
-    
+
+    if(this.rectangle.element) this.rectangle.element.remove()
     const div = this.rectangle.element = document.createElement('div')
 
     Object.keys(this.style).forEach(property => div.style[property] = this.style[property])
@@ -93,19 +101,30 @@ MouseDragging.prototype.moveHandler = function (e) {
 
     const div = this.rectangle.element
     
+    let w = e.x - this['down-value'].left
     let h = e.y - this['down-value'].top 
-    
-    console.log(h)
 
-    div.style.width = `${e.x - this['down-value'].left}px`
-    div.style.height = `${e.y - this['down-value'].top}px`
+    if(w < 0) {
+        div.style.left = `${this['down-value'].left + w}px`
+        div.style.width = `${Math.abs(w)}px`
+    } else {
+        div.style.width = `${w}px`
+    }
+
+    if(h < 0) {
+        div.style.top = `${this['down-value'].top + h}px`
+        div.style.height = `${Math.abs(h)}px`
+    } else {
+        div.style.height = `${h}px`
+    }
 }
 
 MouseDragging.prototype.upHandler = function (e) {
     if(!this.mouseDown) return 
+
     this.mouseDown = false
 
-    // this.rectangle.element.remove()
+    this.rectangle.element.remove()
 
     this['down-value'] = {}
     this['move-value'] = {}
@@ -113,9 +132,18 @@ MouseDragging.prototype.upHandler = function (e) {
 }
 
 MouseDragging.prototype.unmounted = function () {
-    this.scope.removeEventListener(
+    removeEventListener(
         'mousedown', 
         this.downHandler.bind(this)
+    )
+    removeEventListener(
+        'mousemove', 
+        this.moveHandler.bind(this)
+    )
+
+    removeEventListener(
+        'mouseup', 
+        this.upHandler.bind(this)
     )
 }
 
