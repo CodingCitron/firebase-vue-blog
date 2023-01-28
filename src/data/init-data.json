@@ -67,6 +67,30 @@
                 "option": {},
                 "style": {}
             }
+        },
+        {
+            "name": "CommandProcessor",
+            "task": {
+                "option": {
+                    "created": false
+                },
+                "style": {
+                    "left": "50%",
+                    "bottom": "12px",
+                    "width": "400px",
+                    "height": "600px"
+                },
+                "toggle": false
+            },
+            "button": {
+                "scope-component": {
+                    "name": "MainTaskbar",
+                    "position": "center"
+                },
+                "icon-name": "command-prompt-icon-19.jpg",
+                "option": {},
+                "style": {}
+            }
         }
     ]
 }

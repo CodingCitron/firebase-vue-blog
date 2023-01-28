@@ -12,9 +12,9 @@ import { useTaskStore } from '../../strores/task'
 const taskStore = useTaskStore()
 // taskStore.$reset()
 
-console.log(config)
-
 const dragging = ref(new MouseDragging())
+
+onUnmounted(() => taskStore.$reset())
 </script>
 <template>
     <Background :path="BackgroundImg">

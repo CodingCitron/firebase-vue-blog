@@ -10,16 +10,8 @@ function Task(config) {
     this.init()
 }
 
-Task.prototype.setComponent = function () {
-    this.component = markRaw(
-            defineAsyncComponent(
-            () => import(`../../components/tasks/${this.constructor.name}.vue`)
-        )
-    )
-}
-
 Task.prototype.init = function () {
-    this.setComponent()
+    // this.setComponent()
 }
 
 export default Task

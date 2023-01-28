@@ -2,6 +2,9 @@
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useButtonStore } from '../../strores/button'
+import { BUTTONS } from '@/data/init'
+
+console.log(BUTTONS)
 
 const props = defineProps({
     height: {
@@ -63,7 +66,7 @@ const rightTaskbar = computed(() => {
         <div class="task-bar-left">
             <component 
                 v-for="item in leftTaskbar"
-                :is="item.component"
+                :is="BUTTONS[item.name]"
                 :config="item"
             >
             </component>
@@ -71,7 +74,7 @@ const rightTaskbar = computed(() => {
         <div class="task-bar-center">
             <component 
                 v-for="item in centerTaskbar"
-                :is="item.component"
+                :is="BUTTONS[item.name]"
                 :config="item"
             >
             </component>
@@ -79,7 +82,7 @@ const rightTaskbar = computed(() => {
         <div class="task-bar-right">
             <component 
                 v-for="item in rightTaskbar"
-                :is="item.component"
+                :is="BUTTONS[item.name]"
                 :config="item"
             >
             </component>
@@ -95,6 +98,12 @@ const rightTaskbar = computed(() => {
     width: 100%;
     padding: 5px 12px;
     z-index: 100;
+}
+
+.task-bar-left,
+.task-bar-center,
+.task-bar-right{
+    display: flex;
 }
 
 .task-bar.bottom {

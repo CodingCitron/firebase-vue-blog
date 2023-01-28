@@ -1,4 +1,5 @@
 <script setup>
+import { onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from './strores/user'
 import { useButtonStore } from './strores/button'
@@ -20,6 +21,10 @@ userStore.getIp
 weatherStore.setWeather()
 
 // let intervalId = setInterval(weatherStore.setWeather, )
+
+onUnmounted(() => {
+  
+})
 </script>
 <template>
   <router-view></router-view>

@@ -22,7 +22,7 @@ MouseDragging.prototype.setScope = function (target, callback) {
 }
 
 MouseDragging.prototype.activeEvent = function () {
-    addEventListener(
+    this.scope.addEventListener(
         'mousedown', 
         this.downHandler.bind(this)
     )
@@ -78,6 +78,8 @@ MouseDragging.prototype.createBorder = function () {
 }
 
 MouseDragging.prototype.downHandler = function (e) {
+    if(e.target !== e.currentTarget) return
+
     e.preventDefault()
     this.mouseDown = true
 
@@ -93,7 +95,7 @@ MouseDragging.prototype.downHandler = function (e) {
     div.style.top = `${e.y}px`
 
     this.createBorder()
-    this.scope.append(div)
+    this.scope.prepend(div)
 }
 
 MouseDragging.prototype.moveHandler = function (e) {
@@ -132,7 +134,7 @@ MouseDragging.prototype.upHandler = function (e) {
 }
 
 MouseDragging.prototype.unmounted = function () {
-    removeEventListener(
+    this.scope.removeEventListener(
         'mousedown', 
         this.downHandler.bind(this)
     )

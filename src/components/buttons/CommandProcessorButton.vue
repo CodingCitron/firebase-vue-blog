@@ -1,21 +1,23 @@
 <script setup>
+import commandIcon from '../../assets/imgs/icons/command-prompt-icon-19.jpg'
+
 const props = defineProps({
     config: Object
 })
+
 
 </script>
 <template>
     <button 
         class="task-button"
-        @click="config.toggleHandler()"
+        @click="config.click()"
     >
-        <img src="https://img.icons8.com/fluent/24/000000/windows-11.png" alt="window-11-icon">
+        <img :src="commandIcon" alt="CMD">
     </button>
 </template>
 <style scoped>
-
 .task-button img {
-    display: block;
-    height: 28px;
+    height: 20px;
+    object-fit: cover;
 }
 </style>
