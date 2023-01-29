@@ -13,9 +13,6 @@ function Button(config) {
     this['style'] = button.style
     this['icon-name'] = button['icon-name']
     this['option'] = button.option
-
-    this['linked-instance']
-
     this.init()
 }
 
@@ -40,6 +37,8 @@ Button.prototype.toggleHandler = function () {
 Button.prototype.init = function () {
     // this.setComponent()
     const { option, style } = this['task-info']
+
+    
     if(option.created) this.createTask()
 }
 
@@ -47,15 +46,15 @@ Button.prototype.createTask = function () {
     const taskStore = useTaskStore()
     const { tasks } = storeToRefs(taskStore)
 
-    this['linked-instance'] = new DynamicTask(
+    let count = tasks.value.push(new DynamicTask(
         this.name, 
         {
             name: this.name,
             ...this['task-info']
         }
-    )
+    ))
 
-    tasks.value.push(this['linked-instance'])
+    this['linked-instance'] = tasks.value[count - 1]
 }
 
 export default Button
