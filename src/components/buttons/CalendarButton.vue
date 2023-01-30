@@ -38,17 +38,3 @@ onUnmounted(() => {
         </div>
     </button>
 </template>
-<style scoped>
-.task-bar-time {
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    gap: 2px;
-}
-
-.date,
-.time {
-    width: 100%;
-    text-align: right;
-}
-</style>

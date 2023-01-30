@@ -1,10 +1,9 @@
 <script setup>
-import commandIcon from '../../assets/imgs/icons/command-prompt-icon-19.jpg'
+import commandIcon from '../../assets/imgs/icons/terminal-icon.png'
 
 const props = defineProps({
     config: Object
 })
-
 
 </script>
 <template>
@@ -15,9 +14,3 @@ const props = defineProps({
         <img :src="commandIcon" alt="CMD">
     </button>
 </template>
-<style scoped>
-.task-button img {
-    height: 20px;
-    object-fit: cover;
-}
-</style>

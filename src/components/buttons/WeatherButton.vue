@@ -47,17 +47,3 @@ const icon = computed(() => {
         </div>
     </div>
 </template>
-<style scoped>
-.weather-task-button {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    gap: 2px;
-}
-
-.weather-icon-box img {
-    margin-top: 2.5px;
-    height: 40px;
-    object-fit: cover;
-}
-</style>

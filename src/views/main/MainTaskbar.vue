@@ -9,7 +9,7 @@ console.log(BUTTONS)
 const props = defineProps({
     height: {
         type: String,
-        default: '45px'
+        default: '48px'
     },
     backgroundColor: {
         type: String,
@@ -89,36 +89,3 @@ const rightTaskbar = computed(() => {
         </div>
     </nav>
 </template>
-<style scoped>
-.task-bar {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 5px 12px;
-    z-index: 100;
-}
-
-.task-bar-left,
-.task-bar-center,
-.task-bar-right{
-    display: flex;
-}
-
-.task-bar.bottom {
-    bottom: 0;
-}
-
-.task-bar.top {
-    top: 0;
-}
-
-.task-bar.left {
-    left: 0;
-}
-
-.task-bar.right {
-    right: 0;
-}
-</style>

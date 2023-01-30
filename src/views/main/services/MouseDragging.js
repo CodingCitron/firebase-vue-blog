@@ -18,10 +18,13 @@ function MouseDragging(config) {
 
 MouseDragging.prototype.setScope = function (target, callback) {
     this.scope = target
-    callback()
+    this.unmounted()
+    this.activeEvent()
 }
 
 MouseDragging.prototype.activeEvent = function () {
+    if(!this.scope) return
+
     this.scope.addEventListener(
         'mousedown', 
         this.downHandler.bind(this)
@@ -134,19 +137,21 @@ MouseDragging.prototype.upHandler = function (e) {
 }
 
 MouseDragging.prototype.unmounted = function () {
-    this.scope.removeEventListener(
-        'mousedown', 
-        this.downHandler.bind(this)
-    )
-    removeEventListener(
-        'mousemove', 
-        this.moveHandler.bind(this)
-    )
+    if(this.scope) {
+        this.scope.removeEventListener(
+            'mousedown', 
+            this.downHandler.bind(this)
+        )
+        removeEventListener(
+            'mousemove', 
+            this.moveHandler.bind(this)
+        )
 
-    removeEventListener(
-        'mouseup', 
-        this.upHandler.bind(this)
-    )
+        removeEventListener(
+            'mouseup', 
+            this.upHandler.bind(this)
+        )
+    }
 }
 
 export default MouseDragging

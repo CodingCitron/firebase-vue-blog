@@ -22,8 +22,7 @@ onUnmounted(() => taskStore.$reset())
             <div class="control-view"
                 :ref="target => dragging.setScope.call(
                     dragging, 
-                    target, 
-                    dragging.activeEvent.bind(dragging)
+                    target
                 )"
                 :style="config['main-navigation'].style"
             >
