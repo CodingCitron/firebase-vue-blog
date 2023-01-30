@@ -11,7 +11,10 @@ function Button(config) {
     this['style'] = button.style
     this['icon-name'] = button['icon-name']
     this['option'] = button.option
-    
+
+    this.repository = new WeakMap()
+    this.repository.set(this, [])
+
     this.init()
 }
 
@@ -20,7 +23,8 @@ Button.prototype.click = function () {}
 Button.prototype.rightClick = function () {}
 
 Button.prototype.toggleHandler = function () {
-    this['linked-instance'].toggle = !this['linked-instance'].toggle
+    const array = this.repository.get(this)
+    if(array.length === 1) array[0].toggle = !array[0].toggle
 }
 
 Button.prototype.setElement = function (element) {
@@ -36,18 +40,19 @@ Button.prototype.createTask = function () {
     const taskStore = useTaskStore()
     const { tasks } = storeToRefs(taskStore)
 
-    let count = tasks.value.push(
-        new DynamicTask(
-            this.name, 
-            {
-                name: this.name,
-                ...this['task-info'],
-                'linked-instance': this
-            }
-        )
+    const array = this.repository.get(this)
+
+    const task = new DynamicTask(
+        this.name, 
+        {
+            name: this.name,
+            ...this['task-info'],
+            key: this,
+        }
     )
 
-    this['linked-instance'] = tasks.value[count - 1]
+    array.push(task)
+    tasks.value.push(task)
 }
 
 export default Button

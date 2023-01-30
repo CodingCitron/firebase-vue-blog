@@ -29,7 +29,6 @@ const prevDate = computed(() => {
 
 const nextDate = computed(() => {
     const nextDayView = 42 - (date.value.nextDate + prevDate.value.length)
-
     const array = [...Array(nextDayView).keys()].map(i => i + 1)
     return array
 })
@@ -51,7 +50,7 @@ const emits = defineEmits(['taskbar-button-click'])
 function clickOutsideHandler (event) {
     if(!props.config.toggle) return
     if(event.target.closest('.task-bar-time')) return
-    
+
     props.config.toggleHandler()
 }
 </script>

@@ -3,9 +3,14 @@ function Task(config) {
     this.option = config.option
     this.style = config.style
 
-    this['linked-instance']
+    this.repository = new WeakMap()
+    this.repository.set(this, config.key)
 
     this.init()
+}
+
+Task.prototype.getLinkInfo = function () {
+    return this.repository.get(this)
 }
 
 Task.prototype.init = function () {
