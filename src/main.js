@@ -2,34 +2,22 @@ import { createApp } from 'vue'
 import 'material-icons/iconfont/material-icons.css'
 import './assets/css/effect.css'
 import './assets/css/common.css'
+import './assets/css/button.css'
+import './assets/css/task.css'
 import './assets/css/theme.css'
 import './assets/css/style.css'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 import resetStore from './strores/reset'
+import vClickOutside from 'click-outside-vue3'
 
 const pinia = createPinia()
 pinia.use(resetStore)
 
 const app = createApp(App)
 
-app.directive('click-outside', {
-    bind () {
-        this.event = event => this.vm.$emit(this.expression, event)
-        this.el.addEventListener('click', this.stopProp)
-        document.body.addEventListener('click', this.event)
-    },   
-    unbind() {
-        this.el.removeEventListener('click', this.stopProp)
-        document.body.removeEventListener('click', this.event)
-    },
-
-    stopProp(event) { 
-        event.stopPropagation()
-    }
-})
-
+app.use(vClickOutside)
 app.use(router)
 app.use(pinia)
 app.mount('#app')

@@ -11,6 +11,6 @@ const props = defineProps({
         class="task-button"
         @click="config.click()"
     >
-        <img :src="commandIcon" alt="CMD">
+        <img :src="commandIcon" alt="Command Prompt">
     </button>
 </template>

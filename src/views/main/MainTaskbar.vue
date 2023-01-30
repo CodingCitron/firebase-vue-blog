@@ -4,8 +4,6 @@ import { storeToRefs } from 'pinia'
 import { useButtonStore } from '../../strores/button'
 import { BUTTONS } from '@/data/init'
 
-console.log(BUTTONS)
-
 const props = defineProps({
     height: {
         type: String,

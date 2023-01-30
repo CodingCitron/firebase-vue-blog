@@ -16,8 +16,9 @@ function MouseDragging(config) {
     this.selected = []
 }
 
-MouseDragging.prototype.setScope = function (target, callback) {
+MouseDragging.prototype.setScope = function (target) {
     this.scope = target
+    
     this.unmounted()
     this.activeEvent()
 }
@@ -44,11 +45,11 @@ MouseDragging.prototype.activeEvent = function () {
 MouseDragging.prototype.createBorder = function () {
     const div = this.rectangle.element
     
-    const left = document.createElement('div')
-    const right = document.createElement('div')
-    const top = document.createElement('div')
-    const bottom = document.createElement('div')
-    const color = 'rgba(0, 120, 215, 1)'
+    const left = document.createElement('div'),
+    right = document.createElement('div'),
+    top = document.createElement('div'),
+    bottom = document.createElement('div'),
+    color = 'rgba(0, 120, 215, 1)'
 
     left.style.position = 'absolute'
     left.style.left = '0px'
@@ -142,6 +143,7 @@ MouseDragging.prototype.unmounted = function () {
             'mousedown', 
             this.downHandler.bind(this)
         )
+        
         removeEventListener(
             'mousemove', 
             this.moveHandler.bind(this)

@@ -12,7 +12,8 @@
                     "width": "335px",
                     "height": "auto"
                 },
-                "toggle": false
+                "toggle": false,
+                "toggle-click-outside": true
             },
             "button": {
                 "scope-component": {
@@ -31,7 +32,8 @@
                     "created": true
                 },
                 "style": {},
-                "toggle": false
+                "toggle": false,
+                "toggle-click-outside": true
             },
             "button": {
                 "scope-component": {
@@ -52,11 +54,13 @@
                 "style": {
                     "left": "50%",
                     "bottom": "12px",
-                    "width": "400px",
-                    "height": "600px",
+                    "width": "640px",
+                    "min-height": "700px",
+                    "padding": "32px",
                     "transform": "translateX(-50%)"
                 },
-                "toggle": false
+                "toggle": false,
+                "toggle-click-outside": true
             },
             "button": {
                 "scope-component": {

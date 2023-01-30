@@ -3,8 +3,6 @@ const props = defineProps({
     config: Object
 })
 
-console.log(props.config)
-
 </script>
 <template>
     <div 
@@ -12,12 +10,11 @@ console.log(props.config)
         v-show="config.toggle"
         :style="config.style"
     >
-        {{ config }}
+        <div class="search-bar-container">
+            <input />
+        </div>
+        <div class="apps-container">
+            {{ config }}
+        </div>
     </div>
 </template>
-<style scoped>
-.start-menu {
-    position: absolute;
-    border-radius: 4px;
-}
-</style>

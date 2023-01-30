@@ -1,5 +1,3 @@
-
-import { defineAsyncComponent, markRaw } from 'vue'
 import DynamicTask from './DynamicTask'
 import { useTaskStore } from '@/strores/task'
 import { storeToRefs } from 'pinia'
@@ -13,6 +11,7 @@ function Button(config) {
     this['style'] = button.style
     this['icon-name'] = button['icon-name']
     this['option'] = button.option
+    
     this.init()
 }
 
@@ -24,21 +23,12 @@ Button.prototype.toggleHandler = function () {
     this['linked-instance'].toggle = !this['linked-instance'].toggle
 }
 
-// Button.prototype.setComponent = function () {
-//     this.component = markRaw(
-//             defineAsyncComponent(
-//             () => import(`/src/components/buttons/${this.constructor.name}.vue`)
-//             //@/components/buttons/${this.constructor.name}.vue
-//             //../../components/buttons/${this.constructor.name}.vue
-//         )
-//     )
-// }
+Button.prototype.setElement = function (element) {
+    this.element = element
+}
 
 Button.prototype.init = function () {
-    // this.setComponent()
     const { option, style } = this['task-info']
-
-    
     if(option.created) this.createTask()
 }
 
@@ -46,13 +36,16 @@ Button.prototype.createTask = function () {
     const taskStore = useTaskStore()
     const { tasks } = storeToRefs(taskStore)
 
-    let count = tasks.value.push(new DynamicTask(
-        this.name, 
-        {
-            name: this.name,
-            ...this['task-info']
-        }
-    ))
+    let count = tasks.value.push(
+        new DynamicTask(
+            this.name, 
+            {
+                name: this.name,
+                ...this['task-info'],
+                'linked-instance': this
+            }
+        )
+    )
 
     this['linked-instance'] = tasks.value[count - 1]
 }

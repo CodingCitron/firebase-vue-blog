@@ -6,8 +6,6 @@ const props = defineProps({
     config: Object
 })
 
-console.log(props.config)
-
 const days = ['일', '월', '화', '수', '목', '금', '토']
 const date = ref(new Calendar())
 
@@ -49,6 +47,13 @@ function nextHandler() {
 }
 
 const emits = defineEmits(['taskbar-button-click'])
+
+function clickOutsideHandler (event) {
+    if(!props.config.toggle) return
+    if(event.target.closest('.task-bar-time')) return
+    
+    props.config.toggleHandler()
+}
 </script>
 <template>
     <Transition
@@ -56,6 +61,7 @@ const emits = defineEmits(['taskbar-button-click'])
     >
         <div 
             v-show="config.toggle"
+            v-click-outside="clickOutsideHandler"
             class="theme-light task-calender no-select"
             :style="config && config.style"
         >

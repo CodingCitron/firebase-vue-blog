@@ -26,14 +26,15 @@ onUnmounted(() => {
 <template>
     <button 
         :title="`${date.year}년 ${date.month + 1}월 ${date.day}일 ${date.week}`"
+        :ref="e => config.setElement(e)"
         @click="config.toggleHandler()"
         class="task-bar-time task-button"
         :class="config.option.toggle? 'active' : ''"
     >
-        <div class="time">
+        <div class="format-time">
             {{ getFormatTime }}
         </div>
-        <div class="date">
+        <div class="format-date">
             {{ getFormatDate }}
         </div>
     </button>
