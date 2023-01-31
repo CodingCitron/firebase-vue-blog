@@ -31,6 +31,15 @@ Button.prototype.setElement = function (element) {
     this.element = element
 }
 
+Button.prototype.getRepository = function () {
+    return this.repository.get(this)
+}
+
+Button.prototype.getToggle = function () {
+    if(this.repository.get(this).length !== 1) return
+    return this.repository.get(this)[0].toggle
+}
+
 Button.prototype.init = function () {
     const { option, style } = this['task-info']
     if(option.created) this.createTask()

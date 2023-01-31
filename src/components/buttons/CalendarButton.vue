@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onUnmounted } from 'vue'
 import Calendar from '../services/Calendar'
 
 const props = defineProps({
@@ -30,7 +30,7 @@ onUnmounted(() => {
         :ref="e => config.setElement(e)"
         @click="config.toggleHandler()"
         class="task-bar-time task-button"
-        :class="config.option.toggle? 'active' : ''"
+        :class="config.getToggle() ? 'active' : ''"
     >
         <div class="format-time">
             {{ getFormatTime }}
