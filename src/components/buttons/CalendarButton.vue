@@ -12,11 +12,12 @@ let intervalId = setInterval(date.value.update.bind(date.value), 1000)
 
 const getFormatTime = computed(
     () => 
-    `${date.value.meridiem} ${date.value.formatHour}:${date.value.addZero(date.value.minute)}`
+    `${date.value.meridiem} ${date.value.formatHour === 0 ? 12 : date.value.formatHour}:${date.value.addZero(date.value.minute)}`
 )
+
 const getFormatDate = computed(
     () => 
-    `${date.value.year}-${date.value.addZero(date.value.month + 1)}-${date.value.day}`
+    `${date.value.year}-${date.value.addZero(date.value.month + 1)}-${date.value.addZero(date.value.day)}`
 )
 
 onUnmounted(() => {

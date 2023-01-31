@@ -8,6 +8,11 @@
     z-index: 100;
 }
 
+.task-calendar,
+.start-menu {
+    z-index: 10;
+}
+
 .task-bar-left,
 .task-bar-center,
 .task-bar-right {
@@ -105,8 +110,64 @@
     border-radius: 4px;
 }
 
-.task-calender {
+.task-calendar {
     position: absolute;
     border-radius: 4px;
 }
+
+/* Calendar */
+.task-calendar-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.task-calendar .task-calendar-wrap > header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.task-calendar .calendar-view {
+    flex: 1;
+    padding: 8px;
+}
+
+.task-calendar .calendar-view-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-calendar .year-month-button {
+    flex: 1;
+    padding: 8px;
+    text-align: left;
+}
+
+.task-calendar .days {
+    display: inline-grid;
+    grid-template-columns: repeat(7, auto);
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-calendar .day {
+    text-align: center;
+    padding: 8px;
+}
+
+.task-calendar .move-date {
+    padding: 8px;
+}
+
+.calendar-button-container > button,
+.calendar-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Calendar */
+
+
 /* task */

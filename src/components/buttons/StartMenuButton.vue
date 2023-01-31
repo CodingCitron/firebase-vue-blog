@@ -10,6 +10,7 @@ const props = defineProps({
     <button 
         class="task-button"
         @click="config.toggleHandler()"
+        :ref="e => config.setElement(e)"
         v-html="START_MENU_ICON"
     >
     </button>

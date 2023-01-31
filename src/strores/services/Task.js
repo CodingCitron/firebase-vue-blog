@@ -17,6 +17,14 @@ Task.prototype.init = function () {
     // this.setComponent()
 }
 
+Task.prototype.outSideClick = function (e) {
+    if(!this.toggle) return
+    const { element } = this.getLinkInfo()
+
+    if(e.target.closest(`.${element.classList[0]}`) === element) return
+    this.toggleHandler()
+}
+
 Task.prototype.setElement = function (element) {
     this.element = element
 }
