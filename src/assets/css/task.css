@@ -105,6 +105,10 @@
 /* task-bar button */
 
 /* task */
+.header-icon {
+    height: 16px;
+}
+
 .start-menu {
     position: absolute;
     border-radius: 4px;
@@ -169,5 +173,20 @@
 }
 /* Calendar */
 
+/* Command Prompt */
+.command-prompt-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+}
 
+.command-prompt-container .header{
+    background-color: #fff;
+}
+
+.command-prompt-container .editor-view {
+    flex: 1;
+}
+/* Command Prompt */
 /* task */

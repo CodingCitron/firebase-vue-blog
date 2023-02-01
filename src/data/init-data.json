@@ -79,10 +79,10 @@
                     "created": false
                 },
                 "style": {
-                    "left": "50%",
-                    "bottom": "12px",
-                    "width": "400px",
-                    "height": "600px"
+                    "left": "calc(50% - 440px)",
+                    "top": "calc(50% - 255px)",
+                    "width": "980px",
+                    "height": "510px"
                 },
                 "toggle": false
             },

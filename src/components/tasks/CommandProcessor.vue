@@ -5,35 +5,32 @@ import DraggableContainer from '../DraggableContainer.vue'
 const props = defineProps({
     config: Object
 })
+
+console.log(props.config)
 </script>
 <template>
-    <DraggableContainer>
-        <div 
-            class="command-prompt-container"
-            :style="config.style"
-        >
-            <header class="header">
-                명령 프롬프트
-            </header>
-            <div class="editor-view">
+    <DraggableContainer :config="{
+        header: {
+            style: {
+                display: 'flex',
+                alignItems: 'center',
+                height: '30px',
+                fontSize: '12px',
+                padding: '0 8px'
+            },
+            className: 'header',
+            title: '명령 프롬프트',
+            iconName: 'terminal-icon.png'
+        },
+        style: {
+            ...config.style,
+            borderRadius: '4px',
+            overflow: 'hidden',
+        },
+        className: 'command-prompt-container',
+    }">
+        <div class="editor-view">
 
-            </div>
         </div>
     </DraggableContainer>
 </template>
-<style scoped>
-.command-prompt-container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    background-color: #000;
-}
-
-.header {
-    background-color: #fff;
-}
-
-.editor-view {
-    flex: 1;
-}
-</style>
