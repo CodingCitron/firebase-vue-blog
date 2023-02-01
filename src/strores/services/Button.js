@@ -1,4 +1,5 @@
 import DynamicTask from './DynamicTask'
+import { toRaw } from 'vue'
 import { useTaskStore } from '@/strores/task'
 import { storeToRefs } from 'pinia'
 
@@ -61,13 +62,20 @@ Button.prototype.createTask = function () {
     )
 
     array.push(task)
-    tasks.value.push(task)
+    let count = tasks.value.push(task)
+
+    console.log(array[0] === toRaw(tasks.value[count - 1]))
 }
 
-Button.prototype.removeTask = function () {
+Button.prototype.removeTask = function (object) {
     const taskStore = useTaskStore()
     const { tasks } = storeToRefs(taskStore)
-    
+
+    // console.log(array[0] === task) // 같으면 지울 수 있다.
+    // proxy는 어떻게 지울 것인가?
+
+    // toRaw는 원본 객체를 가져올 수 있다.
+    // 이것으로 어떤 객체를 삭제해야 할지 알 수 있다.
 }
 
 export default Button
