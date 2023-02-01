@@ -1,6 +1,7 @@
 <script setup>
 import { onUnmounted } from 'vue'
 import DraggableContainer from '../DraggableContainer.vue'
+import Container from '../services/Container'
 
 const props = defineProps({
     config: Object

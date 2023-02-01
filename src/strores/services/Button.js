@@ -64,4 +64,10 @@ Button.prototype.createTask = function () {
     tasks.value.push(task)
 }
 
+Button.prototype.removeTask = function () {
+    const taskStore = useTaskStore()
+    const { tasks } = storeToRefs(taskStore)
+    
+}
+
 export default Button
