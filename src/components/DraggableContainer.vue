@@ -11,7 +11,6 @@ const dragEl = new DraggableElement({})
 onUnmounted(() => dragEl.unMounted())
 
 function getImagePath(iconName) {
-    console.log(new URL(`./${iconName}`, import.meta.url))
     return new URL(`/src/assets/imgs/icons/${iconName}`, import.meta.url).href
 }
 </script>
@@ -19,6 +18,7 @@ function getImagePath(iconName) {
     <div 
         :class="config.className"
         :style="config.style"
+        :ref="target => dragEl.init(target)"
     >
         <header 
             :class="config.header.className"
@@ -33,7 +33,7 @@ function getImagePath(iconName) {
                 <span>{{ config.header.title }}</span>
             </div>
             <div class="header-right">
-                
+
             </div>
         </header>
         <div>
