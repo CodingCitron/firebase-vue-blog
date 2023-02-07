@@ -63,8 +63,6 @@ Button.prototype.createTask = function () {
 
     array.push(task)
     let count = tasks.value.push(task)
-
-    console.log(array[0] === toRaw(tasks.value[count - 1]))
 }
 
 Button.prototype.removeTask = function (object) {
