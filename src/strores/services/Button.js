@@ -68,12 +68,20 @@ Button.prototype.createTask = function () {
 Button.prototype.removeTask = function (object) {
     const taskStore = useTaskStore()
     const { tasks } = storeToRefs(taskStore)
+    
+    const repositoryTasks = this.getRepository()
 
-    // console.log(array[0] === task) // 같으면 지울 수 있다.
+    console.log(repositoryTasks[0] === object) 
+    // 같으면 지울 수 있다.
     // proxy는 어떻게 지울 것인가?
-
+    
     // toRaw는 원본 객체를 가져올 수 있다.
     // 이것으로 어떤 객체를 삭제해야 할지 알 수 있다.
+    
+    repositoryTasks.splice(0, 1)
+
+    console.log(tasks.value)
+    console.log(repositoryTasks)
 }
 
 export default Button

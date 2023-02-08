@@ -9,13 +9,23 @@ function DraggableElement(config) {
 
 DraggableElement.prototype.init = function (target) {
     this.target = target
-
     this.target.addEventListener('mousedown', this.downHandler.bind(this))
+}
+
+DraggableElement.prototype.setHeader = function (target) {
+    this.header = target
+}
+
+DraggableElement.prototype.condition = function (e) {
+    return (
+        e.button !== 0 || 
+        this.header !== e.target
+    )
 }
 
 DraggableElement.prototype.downHandler = function (e) {
     e.preventDefault()
-
+    if(this.condition(e)) return
     this.down = true
 
     this['down-value'] = {
@@ -23,14 +33,14 @@ DraggableElement.prototype.downHandler = function (e) {
         top: e.y
     }
 
-    addEventListener('mousemove', this.moveHandler.bind(this))
-    addEventListener('mouseup', this.upHandler.bind(this))
+    document.addEventListener('mousemove', this.moveHandler.bind(this))
+    document.addEventListener('mouseup', this.upHandler.bind(this))
 }
 
 DraggableElement.prototype.moveHandler = function (e) {
-    if(!this.down) return
     e.preventDefault()
-    
+    if(!this.down) return
+   
     const { left, top } = this['down-value']
 
     this['move-value'] = {
@@ -46,8 +56,8 @@ DraggableElement.prototype.moveHandler = function (e) {
 }
 
 DraggableElement.prototype.upHandler = function (e) {
-    removeEventListener('mousemove', this.moveHandler.bind(this))
-    removeEventListener('mouseup', this.upHandler.bind(this))
+    document.removeEventListener('mousemove', this.moveHandler.bind(this))
+    document.removeEventListener('mouseup', this.upHandler.bind(this))
 
     if(!this.down) return
     this.down = false
@@ -56,6 +66,5 @@ DraggableElement.prototype.upHandler = function (e) {
 DraggableElement.prototype.unMounted = function () {
     this.target.removeEventListener('mousedown', this.downHandler.bind(this))
 }
-
 
 export default DraggableElement

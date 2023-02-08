@@ -14,24 +14,22 @@ function getImagePath(iconName) {
     return new URL(`/src/assets/imgs/icons/${iconName}`, import.meta.url).href
 }
 
-const emits = defineEmits(['hide', 'transform', 'close'])
-
+const emit = defineEmits(['hide', 'transform', 'close'])
 
 function hideHandler (e) {
-    console.log(e)
-    console.log(props.config)
+    return emit('hide', e)
 }
 
 function transformHandler (e) {
-    console.log(e)
+    return emit('transform', e)
 }
 
 function closeHandler (e) {
-    console.log(e)
+    return emit('close', e)
 }
 </script>
 <template>
-    <div 
+    <div
         :class="config.className"
         :style="config.style"
         :ref="target => dragEl.init(target)"
@@ -39,12 +37,13 @@ function closeHandler (e) {
         <header 
             :class="config.header.className"
             :style="config.header.style"
+            :ref="target => dragEl.setHeader(target)"
         >   
             <div class="header-left">
                 <img 
                     :src="getImagePath(config.header.iconName)"
                     alt="program-img"
-                    class="header-icon" 
+                    class="header-icon"
                 />
                 <span>{{ config.header.title }}</span>
             </div>

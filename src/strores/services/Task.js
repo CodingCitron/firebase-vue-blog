@@ -1,3 +1,6 @@
+import { useTaskStore } from '@/strores/task'
+import { storeToRefs } from 'pinia'
+
 function Task(config) {
     this.name = config.name
     this.option = config.option
@@ -33,6 +36,16 @@ Task.prototype.setElement = function (element) {
 
 Task.prototype.toggleHandler = function () {
     this.toggle = !this.toggle
+}
+
+Task.prototype.close = function (param) {
+    console.log(param)
+
+    console.log(this)
+    console.log(this.getRepository())
+
+    const instance = this.getRepository()
+    instance.removeTask(this)
 }
 
 export default Task

@@ -8,8 +8,13 @@ export const useTaskStore = defineStore('task', () => {
         return computed(() => tasks.value.filter(task => task.name === name))
     }
 
+    function getButton() {
+
+    }
+
     return {
         tasks,
-        getTask
+        getTask,
+        getButton
     }
 })
