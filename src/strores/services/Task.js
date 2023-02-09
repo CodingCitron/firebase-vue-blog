@@ -1,4 +1,4 @@
-import { useTaskStore } from '@/strores/task'
+import { useButtonStore } from '@/strores/button'
 import { storeToRefs } from 'pinia'
 
 function Task(config) {
@@ -8,14 +8,11 @@ function Task(config) {
     
     this.toggle = config.toggle || false 
     
-    this.repository = new WeakMap()
-    this.repository.set(this, config.key)
+    const buttonStore = useButtonStore()
+    this.linked = buttonStore.getButton(config.linked)
 
+    console.log(this.linked)
     this.init()
-}
-
-Task.prototype.getRepository = function () {
-    return this.repository.get(this)
 }
 
 Task.prototype.init = function () {
@@ -24,7 +21,8 @@ Task.prototype.init = function () {
 
 Task.prototype.outSideClick = function (e) {
     if(!this.toggle) return
-    const { element } = this.getRepository()
+    console.log(this.linked)
+    const { element } = this.linked
 
     if(e.target.closest(`.${element.classList[0]}`) === element) return
     this.toggleHandler()

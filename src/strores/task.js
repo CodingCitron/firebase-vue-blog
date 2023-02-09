@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { toRaw, ref, computed } from 'vue'
 
 export const useTaskStore = defineStore('task', () => {
     const tasks = ref([])
@@ -8,13 +8,16 @@ export const useTaskStore = defineStore('task', () => {
         return computed(() => tasks.value.filter(task => task.name === name))
     }
 
-    function getButton() {
-        
+    function removeTask(instance) {
+        const index = tasks.value.findIndex(task => toRaw(task) === instance)
+
+        if(index === -1) return
+        tasks.value.splice(index, 1)
     }
 
     return {
         tasks,
         getTask,
-        getButton
+        removeTask
     }
 })
