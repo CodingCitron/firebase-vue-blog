@@ -187,6 +187,8 @@
 
 .command-prompt-container .editor-view {
     flex: 1;
+    padding: 2px;
+    color: #CCC;
 }
 /* Command Prompt */
 /* task */

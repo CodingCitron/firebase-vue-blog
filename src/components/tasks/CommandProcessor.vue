@@ -12,7 +12,7 @@ const props = defineProps({
         @close="e => config.close.call(config, e)"
     >
         <div class="editor-view">
-            
+            Sangmin's Blog
         </div>
     </DraggableContainer>
 </template>
