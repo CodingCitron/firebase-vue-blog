@@ -12,8 +12,8 @@ const TASKS = {
     CommandProcessor
 }
 
-function DynamicTask(name, config) {
-    return new TASKS[name](config)
+function DynamicTask(config) {
+    return new TASKS[config.name](config)
 }
 
 export default DynamicTask

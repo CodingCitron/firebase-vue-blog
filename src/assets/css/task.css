@@ -178,7 +178,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: #000;
+    background-color: #0A0A0A;
 }
 
 .command-prompt-container .header{

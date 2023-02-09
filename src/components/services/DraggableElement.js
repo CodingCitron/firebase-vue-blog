@@ -8,6 +8,8 @@ function DraggableElement(config) {
 }
 
 DraggableElement.prototype.init = function (target) {
+    if(!target) return
+
     this.target = target
     this.target.addEventListener('mousedown', this.downHandler.bind(this))
 }
@@ -61,10 +63,6 @@ DraggableElement.prototype.upHandler = function (e) {
 
     if(!this.down) return
     this.down = false
-}
-
-DraggableElement.prototype.unMounted = function () {
-    this.target.removeEventListener('mousedown', this.downHandler.bind(this))
 }
 
 export default DraggableElement

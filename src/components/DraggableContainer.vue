@@ -1,14 +1,13 @@
 <script setup>
-import { onUnmounted } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import DraggableElement from './services/DraggableElement'
 
 const props = defineProps({
     config: Object
 })
 
-const dragEl = new DraggableElement({})
-
-onUnmounted(() => dragEl.unMounted())
+let dragEl = new DraggableElement({})
+onUnmounted(() => dragEl = null)
 
 function getImagePath(iconName) {
     return new URL(`/src/assets/imgs/icons/${iconName}`, import.meta.url).href
