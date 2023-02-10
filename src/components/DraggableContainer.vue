@@ -64,7 +64,7 @@ function closeHandler (e) {
                 </button>
             </div>
         </header>
-        <div>
+        <div class="contents-container">
             <slot></slot>
         </div>
     </div>

@@ -1,3 +1,8 @@
+.contents-container {
+    display: flex;
+    height: 100%;
+}
+
 .task-bar {
     position: absolute;
     display: flex;
@@ -186,9 +191,30 @@
 }
 
 .command-prompt-container .editor-view {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    padding: 2px;
-    color: #CCC;
+    padding: 8px;
+    color: #FAFAFA;
+}
+
+.command-prompt-container .editor-view .head {
+    margin-bottom: 16px;
+}
+
+.command-prompt-container .editor-view .editor-body .line .input-field,
+.command-prompt-container .editor-view .editor-body {
+    flex: 1;
+    font-size: 14px;
+}
+
+.command-prompt-container .editor-view .editor-body .line {
+    word-break: break-all;
+    line-height: 1.25rem;
+}
+
+.command-prompt-container .editor-view .editor-body .line .input-field {
+    outline: none;
 }
 /* Command Prompt */
 /* task */

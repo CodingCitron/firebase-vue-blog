@@ -26,8 +26,9 @@ DraggableElement.prototype.condition = function (e) {
 }
 
 DraggableElement.prototype.downHandler = function (e) {
-    e.preventDefault()
     if(this.condition(e)) return
+
+    e.preventDefault()
     this.down = true
 
     this['down-value'] = {
@@ -40,9 +41,9 @@ DraggableElement.prototype.downHandler = function (e) {
 }
 
 DraggableElement.prototype.moveHandler = function (e) {
-    e.preventDefault()
     if(!this.down) return
-   
+
+    e.preventDefault()
     const { left, top } = this['down-value']
 
     this['move-value'] = {
