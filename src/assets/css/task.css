@@ -186,7 +186,7 @@
     background-color: #0A0A0A;
 }
 
-.command-prompt-container .header{
+.command-prompt-container .header {
     background-color: #fff;
 }
 
@@ -205,7 +205,7 @@
 .command-prompt-container .editor-view .editor-body .line .input-field,
 .command-prompt-container .editor-view .editor-body {
     flex: 1;
-    font-size: 14px;
+    /* font-size: 14px; */
 }
 
 .command-prompt-container .editor-view .editor-body .line {
