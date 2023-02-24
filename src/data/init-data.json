@@ -91,7 +91,31 @@
                     "name": "MainTaskbar",
                     "position": "center"
                 },
-                "icon-name": "command-prompt-icon-19.jpg",
+                "icon-name": "",
+                "option": {},
+                "style": {}
+            }
+        },
+        {
+            "name": "Post",
+            "task": {
+                "option": {
+                    "created": false
+                },
+                "style": {
+                    "left": "calc(50% - 490px)",
+                    "top": "calc(50% - 255px)",
+                    "width": "980px",
+                    "height": "510px"
+                },
+                "toggle": false
+            },
+            "button": {
+                "scope-component": {
+                    "name": "MainTaskbar",
+                    "position": "center"
+                },
+                "icon-name": "",
                 "option": {},
                 "style": {}
             }
