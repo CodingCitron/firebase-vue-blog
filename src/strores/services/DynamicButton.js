@@ -15,7 +15,7 @@ const BUTTONS = {
 }
 
 export default function DynamicButton(name, config) {
-    console.log(name, config)
+    // console.log(name, config)
     return new BUTTONS[name](config)
 }
 
